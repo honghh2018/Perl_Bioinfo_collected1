@@ -4,7 +4,7 @@ the usage show as below:
 use Getopt::Long;
 my @array;
 GetOptions(
-  "-al:s" =\@array
+  "-al:s" =>\@array
 );
 open(IN1,"$array[0]") or die $!;
 open(IN2,"$array[1]") or die "$!";  
