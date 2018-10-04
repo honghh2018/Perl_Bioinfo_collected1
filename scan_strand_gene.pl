@@ -5,22 +5,24 @@ use Tie::File;
 use Getopt::Std;
 
 my %para;
-getopts('a:i:o:b:c:d:e:f:h:i:j:k:l:m:n:',\%para);
+getopts('a:i:o:b:c:d:e:f:h:i:j:k:l:m:n:s:',\%para);
 
 if(!defined $para{i} || !defined $para{o}){
 	my $usage=qq'
 	Usage:
 	Contact:honghh\@honghh.com.cn
-	perl $0 -i <infile> -o <outfile>
+	perl $0 -i <infile> -o <outfile> -s <seperator> :default="###"
 ';
 	print $usage;
 	exit;
 }
+
+$para{s} ||="###";
 my @file;
 open(IN,"$para{i}") or die "$!";
 open(OUT,">$para{o}");
-open(OUT1,">filter_id_2018.txt");
-open(TEMP,">Temp.list");
+open(OUT1,">Filter_id_with_+-strand_on.txt");
+open(TEMP,">\.Temp.list"); #hiden temp file
 
 ##filter file header of gff3 build middle file
 my @header=();
@@ -38,8 +40,8 @@ close TEMP;
 for(@header){
 	print OUT $_,"\n";
 }
-open(IN1,"Temp.list") or die "$!";
-tie @file,'Tie::File',\*IN1, recsep => '###',autochomp => 0;
+open(IN1,"\.Temp.list") or die "$!";
+tie @file,'Tie::File',\*IN1, recsep => $para{s},autochomp => 0;
 
 
 my $count=0;
@@ -60,4 +62,6 @@ close IN;
 close OUT;
 close OUT1;
 close IN1;
-`rm -r Temp.list` if(-e "Temp.list");
+`rm -r \.Temp.list` if(-e "\.Temp.list");
+
+
