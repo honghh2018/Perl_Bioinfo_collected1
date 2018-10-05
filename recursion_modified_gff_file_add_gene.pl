@@ -3,7 +3,7 @@ use strict;
 use warnings;
 open(IN,"$ARGV[0]") or die "$!";
 open(OUT,">$ARGV[1]");
-
+#comment:inputfile not allow the "#",besides the header descriptions,delete the header must be fine on this scripts
 while(<IN>){
         &readgff($_);
 }
