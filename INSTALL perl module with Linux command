@@ -1,0 +1,10 @@
+
+As you need the module that perl no give,which you can take below command to install it
+first of all,initial you cpan
+$cpan
+then type below command
+perl　-MCPAN　-e　shell
+install module_name
+Finish work and good luck.
+
+
