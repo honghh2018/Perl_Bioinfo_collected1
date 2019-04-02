@@ -106,7 +106,8 @@ sub Reverse_Complement{
         print OUT $id,"\n";
       }else{
         $seq .=$seq;
-        $seq=~tr/ATCG/TAGC/; ##forbiding i and g modifier 
+        $seq=~tr/ATCG/TAGC/; ##tr expression can not use modifier of i and g,but d and s can replace them
+                             ## d represent substitution,s mean delete the repeat characters that it match 
         $seq=reverse($seq);
         print OUT $seq,"\n";
       }
