@@ -106,7 +106,7 @@ sub Reverse_Complement{
         print OUT $id,"\n";
       }else{
         $seq .=$seq;
-        $seq=~tr/ATCG/TAGC/ig;
+        $seq=~tr/ATCG/TAGC/; ##forbiding i and g modifier 
         $seq=reverse($seq);
         print OUT $seq,"\n";
       }
