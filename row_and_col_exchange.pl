@@ -21,7 +21,11 @@ close IN;
 #transfer
 for my $row(0..$lastcol-1){
 	for my $col(0..$#array){
-		print OUT $dimension[$col][$row],"\t";
+		if($col==$#array){
+                        print OUT $dimension[$col][$row];
+                }else{
+                        print OUT $dimension[$col][$row],"\t";
+                }
 	}
 	print OUT "\n";
 }
