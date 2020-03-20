@@ -1,0 +1,8 @@
+Download from:https://www.gsea-msigdb.org/gsea/downloads.jsp
+cp GSEA_Linux_4.0.3.zip ./
+unzip GSEA_Linux_4.0.3.zip
+
+#Following is a command line that assumes that the identifiers in your dataset match those in your gene sets:
+gsea-cli.sh GSEA -res test.gct -cls test.cls -gmx test.gmx -collapse false
+#Following is a command line that assumes that your dataset uses HG_U133A probe identifiers and your gene sets use gene symbols, so you want to collapse your dataset:
+gsea-cli.sh GSEA -res foo.gct -cls foo.cls -gmx foo.gmx -chip HG_U133A.chip
